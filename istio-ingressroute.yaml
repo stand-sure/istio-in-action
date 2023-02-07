@@ -5,7 +5,7 @@ metadata:
   namespace: istio-system
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - kind: Rule
       match: Host(`istio.192.168.87.157.nip.io`)
@@ -13,18 +13,18 @@ spec:
       services:
         - name: istio-ingressgateway
           port: 80
-#  tls:
-#    secretName: istio.192.168.87.157.nip.io
-#---
-#apiVersion: cert-manager.io/v1
-#kind: Certificate
-#metadata:
-#  name: istio.192.168.87.157.nip.io
-#  namespace: istio-system
-#spec:
-#  dnsNames:
-#    - istio.192.168.87.157.nip.io
-#  secretName: istio.192.168.87.157.nip.io
-#  issuerRef:
-#    name: selfsigned
-#    kind: ClusterIssuer
+  tls:
+    secretName: istio.192.168.87.157.nip.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: istio.192.168.87.157.nip.io
+  namespace: istio-system
+spec:
+  dnsNames:
+    - istio.192.168.87.157.nip.io
+  secretName: istio.192.168.87.157.nip.io
+  issuerRef:
+    name: selfsigned
+    kind: ClusterIssuer
