@@ -28,6 +28,9 @@ static_resources:
                 route:
                   auto_host_rewrite: true
                   cluster: httpbin_service
+                  retry_policy:
+                    retry_on: 5xx
+                    num_retries: 3
   clusters:
     - name: httpbin_service
       connect_timeout: 5s
