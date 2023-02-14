@@ -12,3 +12,4 @@ spec:
       protocol: HTTP
     hosts:
     - "webapp.istioinaction.io"
+    - "istio.192.168.87.157.nip.io"
