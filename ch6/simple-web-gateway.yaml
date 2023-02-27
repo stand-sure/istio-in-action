@@ -11,7 +11,8 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "simple-web.istioinaction.io"
+#    - "simple-web.istioinaction.io"
+    - "simple-web.192.168.87.3.nip.io"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -19,7 +20,8 @@ metadata:
   name: simple-web-vs-for-gateway
 spec:
   hosts:
-  - "simple-web.istioinaction.io"
+#  - "simple-web.istioinaction.io"
+  - "simple-web.192.168.87.3.nip.io"
   gateways:
   - simple-web-gateway
   http:
