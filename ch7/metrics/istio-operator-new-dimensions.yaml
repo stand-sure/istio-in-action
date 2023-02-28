@@ -8,26 +8,35 @@ spec:
         prometheus:
           configOverride:
             inboundSidecar:
+              definitions:
+                - name: get_calls
+                  type: COUNTER
+                  value: "(request.method.startsWith('GET') ? 1 : 0)"
               metrics:
               - name: requests_total
                 dimensions:
                   upstream_proxy_version: upstream_peer.istio_version
                   source_mesh_id: node.metadata['MESH_ID']
-                tags_to_remove:
-                - request_protocol
+                  upstream_operation: istio_operationId
             outboundSidecar:
+              definitions:
+                - name: get_calls
+                  type: COUNTER
+                  value: "(request.method.startsWith('GET') ? 1 : 0)"
               metrics:
               - name: requests_total
                 dimensions:
                   upstream_proxy_version: upstream_peer.istio_version
                   source_mesh_id: node.metadata['MESH_ID']
-                tags_to_remove:
-                - request_protocol
+                  upstream_operation: istio_operationId
             gateway:
+              definitions:
+                - name: get_calls
+                  type: COUNTER
+                  value: "(request.method.startsWith('GET') ? 1 : 0)"
               metrics:
               - name: requests_total
                 dimensions:
                   upstream_proxy_version: upstream_peer.istio_version
                   source_mesh_id: node.metadata['MESH_ID']
-                tags_to_remove:
-                - request_protocol
+                  upstream_operation: istio_operationId
