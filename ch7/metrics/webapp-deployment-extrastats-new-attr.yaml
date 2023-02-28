@@ -16,6 +16,11 @@ spec:
         proxy.istio.io/config: |-
           extraStatTags: 
           - "upstream_operation"
+          - "source_mesh_id"
+          - "upstream_proxy_version"
+          proxyStatsMatcher:
+            inclusionPrefixes:
+            - "istio_get_calls"
       labels:
         app: webapp
     spec:
