@@ -2,10 +2,10 @@ apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: envoy-stats-monitor
-  namespace: prometheus
+  namespace: monitoring
   labels:
     monitoring: istio-proxies
-    release: prom
+    release: kube-prometheus-stack
 spec:
   selector:
     matchExpressions:
