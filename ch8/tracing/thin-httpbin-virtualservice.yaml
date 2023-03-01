@@ -12,8 +12,25 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "webapp.istioinaction.io"
-    - "httpbin.istioinaction.io"
+      - "webapp.192.168.87.3.nip.io"
+      - "catalog.192.168.87.3.nip.io"
+      - "httpbin.192.168.87.3.nip.io"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: catalog-virtualservice
+spec:
+  hosts:
+    - "catalog.192.168.87.3.nip.io"
+  gateways:
+    - coolstore-gateway
+  http:
+    - route:
+        - destination:
+            host: catalog
+            port:
+              number: 80
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -21,13 +38,15 @@ metadata:
   name: thin-httbin-virtualservice
 spec:
   hosts:
-  - "httpbin.istioinaction.io"
+  - "httpbin.192.168.87.3.nip.io"
   gateways:
   - coolstore-gateway
   http:
   - route:
     - destination:
         host: httpbin.org
+        port:
+          number: 80
 ---        
 apiVersion: networking.istio.io/v1alpha3
 kind: ServiceEntry
