@@ -17,7 +17,7 @@ spec:
       cache_duration: 10
       cache_enabled: true
       cache_expiration: 300
-      url: "http://prom-kube-prometheus-stack-prometheus.prometheus:9090"    
+      url: "http://kube-prometheus-stack-prometheus.monitoring:9090"    
     tracing:
       enabled: true
       in_cluster_url: "http://tracing.istio-system:16685/jaeger"
