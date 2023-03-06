@@ -1,0 +1,15 @@
+# k get cm -n istio-system istio -o yaml | yq '.data.mesh' | yq '{"extensionProviders": .extensionProviders}' > ch9/extensionProviders.yaml
+extensionProviders:
+  - envoyOtelAls:
+      port: 4317
+      service: opentelemetry-collector.istio-system.svc.cluster.local
+    name: otel
+  - name: skywalking
+    skywalking:
+      port: 11800
+      service: tracing.istio-system.svc.cluster.local
+  - name: sample-ext-authz-http
+    envoyExtAuthzHttp:
+      service: ext-authz.istioinaction.svc.cluster.local
+      port: 8000
+      includeHeadersInCheck: ["x-ext-authz"]

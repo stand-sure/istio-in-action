@@ -14,4 +14,27 @@ spec:
         notRequestPrincipals: ["*"]
     to:
     - operation:
-        hosts: ["webapp.istioinaction.io"]
+        hosts: 
+          - "webapp.istioinaction.io"
+          - "webapp.192.168.87.3.nip.io"
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-utilities
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+  action: ALLOW
+  rules:
+    - to:
+        - operation:
+            hosts:
+              - "kiali.192.168.87.3.nip.io"
+              - "jaeger-istio.192.168.87.3.nip.io"
+              - "grafana.192.168.87.3.nip.io"
+              - "prometheus.192.168.87.3.nip.io"
+              - "alertmanager.192.168.87.3.nip.io"
+              - "argocd.192.168.87.3.nip.io"
