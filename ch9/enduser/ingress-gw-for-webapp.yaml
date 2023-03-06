@@ -13,6 +13,7 @@ spec:
       protocol: HTTP
     hosts:
     - "webapp.istioinaction.io"
+    - "webapp.192.168.87.3.nip.io"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -22,6 +23,7 @@ metadata:
 spec:
   hosts:
   - "webapp.istioinaction.io"
+  - "webapp.192.168.87.3.nip.io"
   gateways:
   - webapp-gateway
   http:
