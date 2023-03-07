@@ -9,6 +9,7 @@ spec:
   servers:
   - hosts:
     - "catalog.istioinaction.io"
+    - "catalog.192.168.187.2.nip.io"
     port:
       number: 80
       name: http
