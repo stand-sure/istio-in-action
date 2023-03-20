@@ -5,7 +5,6 @@ metadata:
   namespace: istioinaction
 spec:
   hosts:
-  - "catalog.istioinaction.io"
   - "catalog.192.168.87.2.nip.io"
   gateways:
   - "catalog-gateway"
